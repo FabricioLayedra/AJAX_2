@@ -16,13 +16,14 @@ function cargarEmpresas(){
                     li.click(function(){
                         var container =$('<div></div>');
                         var ul = $('<ul></ul>');
-                        let fil = $('<li></li>');
+                        let fil = $('<p></li>');
                         ul.attr("class","servicios");
                         let suma = 0;
                         lista =document.getElementsByClassName("servicios");
                         if (lista!= null){
-                            for (element of lista)
+                            for (element of lista){
                                 element.parentNode.removeChild(element);
+                            }
                         }
                         $.getJSON("gastos_personales.json", function(data) {
                             $.each(data, function(key, val) {
@@ -30,13 +31,13 @@ function cargarEmpresas(){
                                 let servicios = val["servicios"];
                                 for (servicio of servicios){
                                     if (servicio["servicio"]==tipo){
-                                        fil.append(nombres + " debe: "+ servicio["deuda"] + "dolares" +"<br>");
+                                        fil.append(nombres + " debe: "+ servicio["deuda"] + " dólares." +"<br>");
                                         suma += parseFloat(servicio["deuda"]);
                                     }
                                 }
                                 
                             });
-                        fil.append("Total de "+ nombre + ": " + suma.toFixed(2) +"<br>");
+                        fil.append("Total de "+ nombre + ": " + suma.toFixed(2) + " dólares."  +"<br>");
                         ul.append(fil);
                         container.append(ul);
                         $('body').append(container);
