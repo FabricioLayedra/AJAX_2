@@ -17,7 +17,7 @@ function cargarEmpresas(){
                         var container =$('<div></div>');
                         var ul = $('<ul></ul>');
                         let fil = $('<p></li>');
-                        ul.attr("class","servicios");
+                        container.attr("class","servicios");
                         let suma = 0;
                         lista =document.getElementsByClassName("servicios");
                         if (lista!= null){
